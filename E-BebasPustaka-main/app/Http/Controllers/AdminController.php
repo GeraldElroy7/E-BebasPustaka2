@@ -90,12 +90,28 @@ class AdminController extends Controller
       return view ('admin.validasi', compact(['admin', 'mahasiswa']));
   } 
 
-  public function caraterima()
+  public function terimaTA()
   {
       $admin =  Auth::guard('admin')->user();
       $mahasiswa = Mahasiswa::all();
       
-      return view ('admin.caraterima', compact(['admin', 'mahasiswa']));
+      return view ('admin.terimaTA', compact(['admin', 'mahasiswa']));
+  } 
+
+  public function terimaTASetuju(Request $request, $id)
+  {
+    try {
+        DB::transaction(function() use ($request, $id) {
+            $mhs = Mahasiswa::find($id);
+            $mhs->status = 3;
+            $mhs->update();
+        });
+        Alert::success('Sukses', 'Mahasiswa berhasil disetujui');
+        return redirect()->back();
+    } catch(Exception $e) {
+        Alert::success('Gagal', 'Mahasiswa gagal disetujui'.$e->getMessage());
+        return redirect()->back();
+    }
   } 
 
   public function tanggungan()
@@ -113,4 +129,20 @@ class AdminController extends Controller
       
       return view ('admin.suratbebas', compact(['admin', 'mahasiswa']));
   } 
+
+  public function suratbebasSetuju(Request $request, $id)
+  {
+    try {
+        DB::transaction(function() use ($request, $id) {
+            $mhs = Mahasiswa::find($id);
+            $mhs->status = 4;
+            $mhs->update();
+        });
+        Alert::success('Sukses', 'Mahasiswa berhasil disetujui');
+        return redirect()->back();
+    } catch(Exception $e) {
+        Alert::success('Gagal', 'Mahasiswa gagal disetujui'.$e->getMessage());
+        return redirect()->back();
+    }
+  }
 }

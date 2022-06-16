@@ -10,7 +10,7 @@
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 btn-group mb-6 d-flex justify-content-center px-md-4 px-lg-9">
       <a href="/admin/dashboard" class="col btn btn-lg btn-primary active" aria-current="page">1. Aktivasi</a>
           <a href="/admin/validasi" class="col btn btn-lg btn-primary">2. Validasi</a>
-          <a href="/admin/caraterima" class="col btn btn-lg btn-primary">3. Cara Terima</a>
+          <a href="/admin/terimaTA" class="col btn btn-lg btn-primary">3. Terima TA</a>
           <a href="/admin/tanggungan" class="col btn btn-lg btn-primary">4. Tanggungan</a>
           <a href="/admin/suratbebas" class="col btn btn-lg btn-primary">5. Surat BP</a>
       </div>

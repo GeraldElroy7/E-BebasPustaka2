@@ -54,15 +54,19 @@ Route::group(['middleware' => ['auth:admin']], function(){ // DI SCOPE INI PERLU
     //buat nyoba, name
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.index'); // Pengguna - Halaman Form E-Thesis
     Route::put('/admin/dashboard/aktivasi/{id}', [AdminController::class, 'aktivasiMahasiswa'])->name('admin.aktivasi'); // Pengguna - Halaman Form E-Thesis
+    Route::get('/admin/detail/{id}', [AdminController::class, 'detail'])->name('mhs.detail');
 
     Route::get('/admin/validasi', [AdminController::class, 'validasi']);
     Route::put('/admin/validasi/a/{id}', [AdminController::class, 'validasiSetuju'])->name('mhs.validasi.setuju');
     Route::put('/admin/validasi/d/{id}', [AdminController::class, 'validasiTolak'])->name('mhs.validasi.tolak');
 
-    Route::get('/admin/caraterima', [AdminController::class, 'caraterima']);
+    Route::get('/admin/terimaTA', [AdminController::class, 'terimaTA'])->name('admin.terima');
+    Route::put('/admin/terimaTA/setuju/{id}', [AdminController::class, 'terimaTASetuju'])->name('admin.terima.setuju');
+
     Route::get('/admin/tanggungan', [AdminController::class, 'tanggungan']);
-    Route::get('/admin/suratbebas', [AdminController::class, 'suratbebas']);
-    Route::get('/admin/detail/{id}', [AdminController::class, 'detail'])->name('mhs.detail');
+
+    Route::get('/admin/suratbebas', [AdminController::class, 'suratbebas'])->name('admin.suratbebas');
+    Route::get('/admin/suratbebas/setuju/{id}', [AdminController::class, 'suratbebasSetuju'])->name('admin.suratbebas.setuju');
 });
 
 
